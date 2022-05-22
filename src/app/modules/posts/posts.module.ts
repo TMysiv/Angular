@@ -7,6 +7,7 @@ import { PostsComponent } from './components/posts/posts.component';
 import { PostComponent } from './components/post/post.component';
 import { PostDetailsComponent } from './components/post-details/post-details.component';
 import {PostsService} from "./services";
+import {PostResolver, PostsResolver} from "./services/resolvers";
 
 
 @NgModule({
@@ -20,6 +21,6 @@ import {PostsService} from "./services";
     PostsRoutingModule,
     HttpClientModule
   ],
-  providers:[PostsService]
+  providers:[PostsService,PostsResolver,PostResolver]
 })
 export class PostsModule { }
