@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
+import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree} from '@angular/router';
 import { Observable } from 'rxjs';
 
 import {LoginService} from "../../login/services";
@@ -9,13 +9,14 @@ import {LoginService} from "../../login/services";
 })
 export class CarsGuard implements CanActivate {
 
-  constructor(private loginService:LoginService) {
+  constructor(private loginService:LoginService, private router:Router) {
   }
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
     if (!this.loginService.isAuthorization()){
+      this.router.navigate(['login'])
       return false
     }
     else {

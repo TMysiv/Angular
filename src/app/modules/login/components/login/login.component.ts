@@ -30,15 +30,15 @@ export class LoginComponent implements OnInit {
 
   login() {
     const user = this.form.value;
-    this.loginService.login(user).subscribe(
-      value => {
-          this.loginService.setToken(value),
+    this.loginService.login(user).subscribe({
 
-          this.router.navigate(['cars'])
-      },
-      e => {
+      next:value => { this.loginService.setToken(value),
+        this.router.navigate(['cars'])},
+
+      error:e => {
         this.errorUser = e.error.detail
-      },
+      }
+    }
     )
 
   }

@@ -35,9 +35,10 @@ export class RegisterComponent implements OnInit {
   register():void{
     const user = this.form.value;
     delete user.confirmPassword;
-    this.registerService.register(user).subscribe(
-      () => { this.router.navigate(['login']) },
-      e =>{ this.userError = e.error.username[0]}
+    this.registerService.register(user).subscribe({
+      next: () => { this.router.navigate(['login']) },
+      error: e =>{ this.userError = e.error.username[0]}
+      }
     )
   }
 
