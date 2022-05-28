@@ -1,0 +1,8 @@
+<app-user *ngFor="let user of users" [user]="user"
+
+          (userEmitter)="catchUser($event)"
+>
+</app-user>
+
+<div *ngIf="userEmitter">{{userEmitter.name}}</div>
+
