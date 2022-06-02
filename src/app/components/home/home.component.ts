@@ -9,16 +9,31 @@ import {MovieService} from "../../module/movies/services";
 })
 export class HomeComponent implements OnInit {
 
-  popularMovies:any
+  popularMovies:any;
+  page:number = 1;
 
   constructor(private movieService:MovieService) { }
 
   ngOnInit(): void {
-    this.movieService.getPopularMovies().subscribe(value => {
+    this.movieService.getPopularMovies(this.page).subscribe(value => {
       const {results} = value;
       this.popularMovies = results;
-      console.log(this.popularMovies)
     })
   }
 
+  nextPage() {
+    const id = ++this.page;
+    this.movieService.getPopularMovies(id).subscribe(value => {
+      const {results} = value
+      this.popularMovies = results;
+    })
+  }
+
+  previousPage() {
+    const id = --this.page;
+    this.movieService.getPopularMovies(id).subscribe(value => {
+      const {results} = value
+      this.popularMovies = results;
+    })
+  }
 }

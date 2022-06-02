@@ -10,7 +10,7 @@ export class MovieService {
 
   constructor(private http:HttpClient) { }
 
-  getPopularMovies(id:number=2):Observable<any>{
-    return this.http.get<any>(`${urls.popular}page=${id}`)
+  getPopularMovies(page:number):Observable<any>{
+    return this.http.get<any>(`${urls.popular}page=${page}`)
   }
 }
