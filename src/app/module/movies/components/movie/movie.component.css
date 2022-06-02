@@ -1,0 +1,12 @@
+.movie_img {
+  width: 200px;
+  border: 1px solid black;
+  height: 200px;
+  text-align: center;
+}
+
+.img {
+  height: 200px;
+  background-repeat: no-repeat;
+  background-size: 100%;
+}

@@ -1,0 +1,9 @@
+.genres{
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.genres_wrap{
+  border: 1px solid black;
+}
